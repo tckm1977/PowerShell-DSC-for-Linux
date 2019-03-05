@@ -26,14 +26,14 @@ class HttpClientFactory:
         The ssl module was also unavailable for [2.4.0 - 2.6.0[.
     """
 
-    def __init__(self, cert, key, insecure=False, use_proxy=True):
+    def __init__(self, cert, key, insecure=False, force_no_proxy=False):
         self.cert = cert
         self.key = key
         self.insecure = insecure
         self.proxy_configuration = None
 
         # set proxy if valid proxy_configuration path is detected
-        if use_proxy:
+        if not force_no_proxy:
             proxy_conf_path = configuration.get_proxy_configuration_path()
             if proxy_conf_path != configuration.DEFAULT_PROXY_CONFIGURATION_PATH \
                     and os.path.isfile(proxy_conf_path):

@@ -208,7 +208,7 @@ def register(registration_endpoint, worker_group_name, machine_id, cert_path, ke
     http_client_factory = httpclientfactory.HttpClientFactory(cert_path, key_path, test_mode)
     http_client = http_client_factory.create_http_client(sys.version_info)
 
-    no_proxy_http_client_factory = httpclientfactory.HttpClientFactory(cert_path, key_path, test_mode, use_proxy=False)
+    no_proxy_http_client_factory = httpclientfactory.HttpClientFactory(cert_path, key_path, test_mode, force_no_proxy=True)
     no_proxy_http_client = no_proxy_http_client_factory.create_http_client(sys.version_info)
 
     headers, payload = get_headers_and_payload(worker_group_name, is_azure_vm, vm_id, azure_resource_id, cert_path,
